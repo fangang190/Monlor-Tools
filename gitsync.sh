@@ -123,7 +123,6 @@ case $1 in
 		pack $2
 		;;
 	test)
-		reset
 		localgit
 		testing
 		;;

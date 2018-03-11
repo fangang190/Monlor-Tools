@@ -12,7 +12,7 @@ service=HttpFile
 appname=httpfile
 EXTRA_COMMANDS=" status backup recover"
 EXTRA_HELP="        status  Get $appname status"
-port=1688
+# port=
 BIN=/opt/sbin/nginx
 NGINXCONF=/opt/etc/nginx/nginx.conf
 CONF=/opt/etc/nginx/vhost/httpfile.conf
@@ -51,7 +51,9 @@ set_config() {
 		EOF
 	fi
 	# 生成配置文件
+	logsh "【$service】" "生成$appname配置文件..."
 	[ ! -d "/opt/etc/nginx/vhost" ] && mkdir -p /opt/etc/nginx/vhost
+	[ -z "`ucish keys`" ] && logsh "【$service】" "未添加$appname配置！" && exit
 	rm -rf $CONF
 	ucish keys | while read line
 	do
@@ -73,6 +75,7 @@ set_config() {
 		EOF
 		sed -i "s/port/$port/" $CONF
 		sed -i "s#directory#$path#" $CONF
+		logsh "【$service】" "加载$appname配置:[端口号:$port, 路径:$path]"
 		iptables -I INPUT -p tcp --dport $port -m comment --comment "monlor-$appname" -j ACCEPT 
 	done
 }
@@ -110,7 +113,6 @@ start () {
 		exit
     fi
     logsh "【$service】" "启动$appname服务完成！"
-    logsh "【$service】" "请在浏览器中访问[http://$lanip:$port]"
 
 }
 

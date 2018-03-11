@@ -1,3 +1,3 @@
 appname=httpfile
-uci del monlor.$appname.port
-uci del monlor.$appname.path
+uci -q del monlor.$appname.port
+uci -q del monlor.$appname.path
