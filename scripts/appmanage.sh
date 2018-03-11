@@ -142,7 +142,7 @@ upgrade() {
 
 del() {
 
-	if checkuci $appname || [ "$force" == '0' ]; then
+	if !(checkuci $appname) && [ "$force" == '0' ]; then
 		echo -n "【$appname】插件未安装！继续卸载？[y/n] "
 		read answer
 		[ "$answer" == "n" ] && exit
