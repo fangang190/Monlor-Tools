@@ -17,7 +17,7 @@ getapp() {
 	if [ "$addtype" == '0' ]; then #检查是否安装在线插件
 		#下载插件
 		logsh "【Tools】" "正在安装在线插件..."
-		logsh "【Tools】" "下载安装文件"
+		logsh "【Tools】" "下载【$appname】安装文件"
 		wgetsh "/tmp/$appname.tar.gz" "$monlorurl/appstore/$appname.tar.gz"
 		if [ $? -eq 1 ]; then
 			logsh "【Tools】" "文件下载失败！"
@@ -72,7 +72,7 @@ add() {
 	fi
 
 	#配置添加到工具箱配置文件
-	logsh "【Tools】" "更新配置脚本"
+	logsh "【Tools】" "更新工具箱配置脚本"
 	result=`cat $monlorconf | grep -i "【$appname】" | wc -l`
 	if [ "$result" == '0' ]; then
 		sed -i '/#monlor-if/d' $monlorconf
@@ -123,15 +123,15 @@ upgrade() {
 	#停止插件
 	$monlorpath/apps/$appname/script/$appname.sh stop > /dev/null 2>&1
 	#先获取插件包
-	getapp
+	force=1 && getapp
 	#删除插件的配置
-	logsh "【Tools】" "正在清除旧文件..."
+	logsh "【Tools】" "清除一些旧的配置..."
 	sed -i "/script\/$appname/d" $monlorpath/scripts/dayjob.sh
 	ssline1=$(cat $monlorconf | grep -ni "【$appname】" | head -1 | cut -d: -f1)
 	ssline2=$(cat $monlorconf | grep -ni "【$appname】" | tail -1 | cut -d: -f1)
 	[ ! -z "$ssline1" -a ! -z "$ssline2" ] && sed -i ""$ssline1","$ssline2"d" $monlorconf > /dev/null 2>&1
 	#安装服务
-	force=1 && add $appname
+	add $appname
 	# logsh "【Tools】" "插件【$appname】更新完成"
 	# result=$(uci -q get monlor.$appname.enable)
 	# if [ "$result" == '1' ]; then
