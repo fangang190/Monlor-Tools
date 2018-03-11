@@ -11,7 +11,7 @@ appname=$(basename $2 | cut -d'.' -f1)
 [ "$3" == "-f" ] && force=1 || force=0
 [ -z "`uci -q get monlor.tools`" ] && logsh "【Tools】" "工具箱配置文件未创建！" && exit
 
-add() {
+getapp() {
 
 	[ "$force" == '0' ] && checkuci $appname && logsh "【Tools】" "插件【$appname】已经安装！" && exit
 	if [ "$addtype" == '0' ]; then #检查是否安装在线插件
@@ -36,7 +36,13 @@ add() {
 		logsh "【Tools】" "解压【$appname】文件失败！" 
 		exit
 	fi
+
+}
+
+add() {
 	
+	getapp
+
 	if [ -d /tmp/$appname/bin ]; then
 		if [ "$model" == "arm" ]; then
 			rm -rf /tmp/$appname/bin/*_*
@@ -70,6 +76,7 @@ add() {
 	fi
 
 	#配置添加到工具箱配置文件
+	logsh "【Tools】" "更新【$appname】配置脚本"
 	result=`cat $monlorconf | grep -i "【$appname】" | wc -l`
 	if [ "$result" == '0' ]; then
 		sed -i '/#monlor-if/d' $monlorconf
@@ -92,6 +99,7 @@ add() {
 		/tmp/$appname/install/install.sh
 	fi
 	#安装插件
+	logsh "【Tools】" "安装插件【$appname】到工具箱"
 	rm -rf /tmp/$appname/install
 	cp -rf /tmp/$appname $monlorpath/apps
 	#清除临时文件
@@ -116,17 +124,19 @@ upgrade() {
 		!(compare $newver $oldver) && logsh "【Tools】" "【$appname】已经是最新版！" && exit
 		logsh "【Tools】" "版本不一致，正在更新$appname插件... "
 	fi
-	#卸载插件
+	#停止插件
 	$monlorpath/apps/$appname/script/$appname.sh stop
+	#先获取插件包
+	getapp
 	#删除插件的配置
-	logsh "【Tools】" "正在卸载【$appname】插件..."
+	logsh "【Tools】" "正在清除【$appname】旧文件..."
 	sed -i "/script\/$appname/d" $monlorpath/scripts/dayjob.sh
 	ssline1=$(cat $monlorconf | grep -ni "【$appname】" | head -1 | cut -d: -f1)
 	ssline2=$(cat $monlorconf | grep -ni "【$appname】" | tail -1 | cut -d: -f1)
 	[ ! -z "$ssline1" -a ! -z "$ssline2" ] && sed -i ""$ssline1","$ssline2"d" $monlorconf > /dev/null 2>&1
 	#安装服务
 	force=1 && add $appname
-	logsh "【Tools】" "插件【$appname】更新完成"
+	# logsh "【Tools】" "插件【$appname】更新完成"
 	# result=$(uci -q get monlor.$appname.enable)
 	# if [ "$result" == '1' ]; then
 	# 	logsh "【Tools】" "正在启动【$appname】服务"

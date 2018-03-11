@@ -11,7 +11,7 @@ else
 	md5=md5sum
 fi
 
-update_version() {
+vtools() {
 	version=$(cat config/version.txt)
 	num1=$(echo "$version" | cut -d'.' -f1)
 	num2=$(echo "$version" | cut -d'.' -f2)
@@ -25,6 +25,16 @@ update_version() {
 	else
 		echo "$newver" > config/version.txt
 	fi
+}
+
+vapp() {
+	local appname="$1"
+	version=$(cat $appname/config/version.txt)
+	num1=$(echo "$version" | cut -d'.' -f1)
+	num2=$(echo "$version" | cut -d'.' -f2)
+	num3=$(echo "$version" | cut -d'.' -f3)
+	let num3=$num3+1
+	echo "$num1.$num2.$num3" > $appname/config/version.txt
 }
 
 pack() {
@@ -50,10 +60,12 @@ pack() {
 		if [ "$name" == "all" ]; then
 			ls | while read line 
 			do
+				vapp $line
 				tar -zcvf $line.tar.gz $line/
 			done 
 			$md5 ./*.tar.gz > ../md5.txt
 		else
+			vapp $name
 			tar -zcvf $name.tar.gz $name/
 			sed -i "/$name/d" ../md5.txt
 			$md5 ./$name.tar.gz >> ../md5.txt
@@ -119,8 +131,8 @@ case $1 in
 		coding
 		;;
 	pack) 
-		[ "$2" == "-v" -o "$3" == "-v" ] && update_version
-		pack $2
+		[ "$2" == "-v" -o "$3" == "-v" ] && vtools
+		[ "$2" == "-v" ] && pack || pack $2
 		;;
 	test)
 		localgit
