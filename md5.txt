@@ -14,4 +14,4 @@ f6bfa2b9784acbdbe2f75727b50fff27  appstore/shadowsocks.tar.gz
 2ab88981b9fe502fa59b8344d0c38847  appstore/verysync.tar.gz
 e19cd8bc7658f1dfdcd635c8798d7ff2  appstore/vsftpd.tar.gz
 3bd671b74ebb961390ea57e1751b9d38  appstore/webshell.tar.gz
-d0d3ab0522b338b1d884ec982b99ea90  ./httpfile.tar.gz
+e25c9610e61ca22e19bdff92dd97767f  ./httpfile.tar.gz

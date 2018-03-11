@@ -59,7 +59,7 @@ set_config() {
 	do
 		port=$(ucish get $line | cutsh 1)
 		path=$(ucish get $line | cutsh 2)
-		cat > "$CONF" <<-\EOF
+		cat >> "$CONF" <<-\EOF
 		server {
 		        listen  port;
 		        server_name  httpfile;

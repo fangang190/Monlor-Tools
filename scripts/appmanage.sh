@@ -16,7 +16,7 @@ getapp() {
 	[ "$force" == '0' ] && checkuci $appname && logsh "【Tools】" "插件【$appname】已经安装！" && exit
 	if [ "$addtype" == '0' ]; then #检查是否安装在线插件
 		#下载插件
-		logsh "【Tools】" "正在安装在线插件..."
+		logsh "【Tools】" "以在线的方式安装插件..."
 		logsh "【Tools】" "下载【$appname】安装文件"
 		wgetsh "/tmp/$appname.tar.gz" "$monlorurl/appstore/$appname.tar.gz"
 		if [ $? -eq 1 ]; then
@@ -24,7 +24,7 @@ getapp() {
 			exit
 		fi
 	else
-		logsh "【Tools】" "正在安装离线插件..."
+		logsh "【Tools】" "以离线的方式安装插件..."
 		[ ! -f "$apppath/$appname.tar.gz" ] && logsh "【Tools】" "未找到离线安装包" && exit
 		cp $apppath/$appname.tar.gz /tmp > /dev/null 2>&1
 	fi
@@ -118,7 +118,7 @@ upgrade() {
 		[ $? -ne 0 ] && logsh "【Tools】" "$appname文件出现问题，请卸载后重新安装" && exit
 		logsh "【Tools】" "当前版本$oldver，最新版本$newver"
 		!(compare $newver $oldver) && logsh "【Tools】" "【$appname】已经是最新版！" && exit
-		logsh "【Tools】" "版本不一致，正在更新$appname插件... "
+		logsh "【Tools】" "版本不一致，正在更新【$appname】插件... "
 	fi
 	#停止插件
 	$monlorpath/apps/$appname/script/$appname.sh stop > /dev/null 2>&1
