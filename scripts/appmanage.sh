@@ -40,8 +40,6 @@ getapp() {
 }
 
 add() {
-	
-	getapp
 
 	if [ -d /tmp/$appname/bin ]; then
 		if [ "$model" == "arm" ]; then
@@ -176,7 +174,7 @@ del() {
  
 
 case $1 in
-	add) add ;;
+	add) getapp && add ;;
 	upgrade) upgrade ;;
 	del) del ;;
 	*) echo "Usage: $0 {add|upgrade|del} appname"
