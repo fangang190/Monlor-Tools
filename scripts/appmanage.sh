@@ -121,7 +121,7 @@ upgrade() {
 		logsh "【Tools】" "版本不一致，正在更新$appname插件... "
 	fi
 	#停止插件
-	$monlorpath/apps/$appname/script/$appname.sh stop
+	$monlorpath/apps/$appname/script/$appname.sh stop > /dev/null 2>&1
 	#先获取插件包
 	getapp
 	#删除插件的配置
