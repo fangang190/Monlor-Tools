@@ -16,24 +16,22 @@ getapp() {
 	[ "$force" == '0' ] && checkuci $appname && logsh "【Tools】" "插件【$appname】已经安装！" && exit
 	if [ "$addtype" == '0' ]; then #检查是否安装在线插件
 		#下载插件
-		logsh "【Tools】" "正在安装【$appname】在线插件..."
-		logsh "【Tools】" "下载【$appname】安装文件"
+		logsh "【Tools】" "正在安装在线插件..."
+		logsh "【Tools】" "下载安装文件"
 		wgetsh "/tmp/$appname.tar.gz" "$monlorurl/appstore/$appname.tar.gz"
 		if [ $? -eq 1 ]; then
-			logsh "【Tools】" "下载【$appname】文件失败！"
+			logsh "【Tools】" "文件下载失败！"
 			exit
 		fi
 	else
-		logsh "【Tools】" "正在安装【$appname】离线插件..."
+		logsh "【Tools】" "正在安装离线插件..."
 		[ ! -f "$apppath/$appname.tar.gz" ] && logsh "【Tools】" "未找到离线安装包" && exit
 		cp $apppath/$appname.tar.gz /tmp > /dev/null 2>&1
-		checkuci $appname && logsh "【Tools】" "插件【$appname】已经安装！" && exit
 	fi
-
-	logsh "【Tools】" "解压【$appname】安装文件"
+	logsh "【Tools】" "解压安装文件"
 	tar -zxvf /tmp/$appname.tar.gz -C /tmp > /dev/null 2>&1
 	if [ $? -ne 0 ]; then
-		logsh "【Tools】" "解压【$appname】文件失败！" 
+		logsh "【Tools】" "文件解压失败！" 
 		exit
 	fi
 
@@ -74,7 +72,7 @@ add() {
 	fi
 
 	#配置添加到工具箱配置文件
-	logsh "【Tools】" "更新【$appname】配置脚本"
+	logsh "【Tools】" "更新配置脚本"
 	result=`cat $monlorconf | grep -i "【$appname】" | wc -l`
 	if [ "$result" == '0' ]; then
 		sed -i '/#monlor-if/d' $monlorconf
@@ -97,7 +95,7 @@ add() {
 		/tmp/$appname/install/install.sh
 	fi
 	#安装插件
-	logsh "【Tools】" "安装插件【$appname】到工具箱"
+	logsh "【Tools】" "安装插件到工具箱"
 	rm -rf /tmp/$appname/install
 	cp -rf /tmp/$appname $monlorpath/apps
 	#清除临时文件
@@ -109,7 +107,7 @@ add() {
 
 upgrade() {
 	
-	[ "$force" == '0' ] && !(checkuci $appname) && logsh "【Tools】" "【$appname】插件未安装！" && exit
+	[ "$force" == '0' ] && !(checkuci $appname) && logsh "【Tools】" "插件【$appname】未安装！" && exit
 	if [ "$force" == '0' ]; then 
 		#检查更新
 		rm -rf /tmp/version.txt
@@ -127,7 +125,7 @@ upgrade() {
 	#先获取插件包
 	getapp
 	#删除插件的配置
-	logsh "【Tools】" "正在清除【$appname】旧文件..."
+	logsh "【Tools】" "正在清除旧文件..."
 	sed -i "/script\/$appname/d" $monlorpath/scripts/dayjob.sh
 	ssline1=$(cat $monlorconf | grep -ni "【$appname】" | head -1 | cut -d: -f1)
 	ssline2=$(cat $monlorconf | grep -ni "【$appname】" | tail -1 | cut -d: -f1)
