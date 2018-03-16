@@ -71,4 +71,10 @@ fi
 [ -f $monlorpath/scripts/cru ] && rm -rf $monlorpath/scripts/cru
 [ -f $monlorpath/config/cru.conf ] && rm -rf $monlorpath/config/cru.conf
 
+cat $monlorpath/config/applist* | while read line
+do
+	checkuci $line || continue
+	wget $monlorpath/apps/$line/config/monlor.conf $monlorurl/apps/$line/config/monlor.conf
+done
+
 logsh "【Tools】" "工具箱更新完成！"
