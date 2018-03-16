@@ -8,11 +8,11 @@ logsh() {
 	return 0
 	
 }
-echo "-----------------------------------------------"
-echo "|                                             |"
-echo "|          Welcome to Monlor Tools!           |"
-echo "|                                             |"
-echo "-----------------------------------------------"
+echo "***********************************************"
+echo "**                                           **"
+echo "**          Welcome to Monlor Tools!         **"
+echo "**                                           **"
+echo "***********************************************"
 logsh "【Tools】" "请按任意键安装工具箱(Ctrl + C 退出)."
 read answer
 monlorurl="https://coding.net/u/monlor/p/Monlor-Tools/git/raw/master"
