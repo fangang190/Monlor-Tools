@@ -5,24 +5,22 @@
 工具箱正处于测试状态，更新比较频繁，安装要有一定的动手能力，出问题会用U盘刷固件。  
 arm路由: R1D R2D R3D , mips路由: R3 R3P R3G R1CM   
 目前支持了以下几种插件:   
-
-1. [ShadowSocks](https://github.com/shadowsocks/shadowsocks/tree/master)
-2. [KoolProxy](http://koolshare.b0.upaiyun.com/)
-3. [Aria2](http://aria2.github.io/)
-4. [VsFtpd](https://security.appspot.com/vsftpd.html)
-5. [kms](https://github.com/Wind4/vlmcsd)
-6. [Frpc](https://github.com/fatedier/frp)
-7. [Ngrok](https://github.com/dosgo/ngrok-c)
-8. [WebShell](https://github.com/shellinabox/shellinabox)
-9. [TinyProxy](https://github.com/tinyproxy/tinyproxy)
-10. [Entware](https://github.com/Entware/Entware-ng)
-11. [KodExplorer](https://kodcloud.com/)
-12. [EasyExplorer](http://koolshare.cn/thread-129199-1-1.html)
-13. HttpFile
-14. [VerySync](http://verysync.com/)
-15. [FastDick](https://github.com/fffonion/Xunlei-Fastdick)
-16. FireWall
-
+>1. [ShadowSocks](https://github.com/shadowsocks/shadowsocks/tree/master)
+>2. [KoolProxy](http://koolshare.b0.upaiyun.com/)
+>3. [Aria2](http://aria2.github.io/)
+>4. [VsFtpd](https://security.appspot.com/vsftpd.html)
+>5. [kms](https://github.com/Wind4/vlmcsd)
+>6. [Frpc](https://github.com/fatedier/frp)
+>7. [Ngrok](https://github.com/dosgo/ngrok-c)
+>8. [WebShell](https://github.com/shellinabox/shellinabox)
+>9. [TinyProxy](https://github.com/tinyproxy/tinyproxy)
+>10. [Entware](https://github.com/Entware/Entware-ng)
+>11. [KodExplorer](https://kodcloud.com/)
+>12. [EasyExplorer](http://koolshare.cn/thread-129199-1-1.html)
+>13. HttpFile
+>14. [VerySync](http://verysync.com/)
+>15. [FastDick](https://github.com/fffonion/Xunlei-Fastdick)
+>16. FireWall
 工具箱没有web界面，完全靠Shell开发，插件的安装、卸载、配置由配置文件完成。   
 安装完成后执行monlor命令配置工具箱，Ctrl + c或者输入exit可以退出。   
 才疏学浅，但有一颗学习和折腾的心！   
