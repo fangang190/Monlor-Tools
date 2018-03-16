@@ -1,6 +1,6 @@
 # Monlor-Tools
 
-![工具箱界面](https://raw.githubusercontent.com/monlor/Monlor-Tools/master/temp/img.png)
+![工具箱界面](https://raw.githubusercontent.com/monlor/Monlor-Tools/master/temp/img.png =200x300)
 
 >工具箱正处于测试状态，更新比较频繁，安装要有一定的动手能力，出问题会用U盘刷固件。  
 >arm路由: R1D R2D R3D，mips路由: R3 R3P R3G R1CM，才疏学浅，但有一颗学习和折腾的心！   
