@@ -21,9 +21,11 @@
 	工具箱没有web界面，完全靠Shell开发，插件的安装、卸载、配置由配置文件完成。
 	安装完成后执行monlor命令配置工具箱，Ctrl + c或者输入exit可以退出。
 	才疏学浅，但有一颗学习和折腾的心！
-	
+
 	![工具箱界面](https://raw.githubusercontent.com/monlor/Monlor-Tools/master/temp/img.png)
 	
+[ShadowSocks](https://github.com/shadowsocks/shadowsocks/tree/master)
+
 ## 安装方式：  
 #### 	插件的安装
 	1. 离线安装插件，appmanage.sh add /tmp/kms.tar.gz安装插件 
