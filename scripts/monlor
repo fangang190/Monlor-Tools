@@ -4,6 +4,7 @@
 monlorpath=$(uci -q get monlor.tools.path)
 [ $? -eq 0 ] && source "$monlorpath"/scripts/base.sh || exit
 param=$1
+Applist=$monlorpath/config/applist
 
 manage() {
 
