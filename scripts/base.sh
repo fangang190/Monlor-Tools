@@ -7,7 +7,6 @@ monlorurl_github="https://raw.githubusercontent.com/monlor/Monlor-Tools/master"
 monlorurl_test="https://coding.net/u/monlor/p/Monlor-Test/git/raw/master"
 monlorpath=$(uci -q get monlor.tools.path)
 userdisk=$(uci -q get monlor.tools.userdisk)
-monlorconf="$monlorpath/scripts/monlor"
 monlorbackup="/etc/monlorbackup"
 [ -z "$userdisk" ] && userdisk="$monlorpath"
 lanip=$(uci get network.lan.ipaddr)

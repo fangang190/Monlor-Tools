@@ -21,6 +21,7 @@ LOG=/var/log/$appname.log
 set_config() {
 
 	logsh "【$service】" "加载$appname配置"
+	[ -z "`ucish keys`" ] && logsh "【$service】" "未添加$appname配置！" && exit
 	ucish keys | while read line
 	do
 		name="$line"
@@ -78,7 +79,7 @@ status() {
 
 	num1=$(iptables -S | grep -c "$appname"-)
 	num2=$(ucish show | wc -l)
-	if [ "$num1" != "$num2" ]; then
+	if [ "$num1" != "$num2" -o "$num2" == '0' ]; then
 		echo "未运行"
 		echo "0"
 	else
