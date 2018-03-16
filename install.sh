@@ -8,6 +8,11 @@ logsh() {
 	return 0
 	
 }
+echo "***********************************************"
+echo "*                                             *"
+echo "*          Welcome to Monlor Tools!           *"
+echo "*                                             *"
+echo "***********************************************"
 logsh "【Tools】" "是否要安装Monlor Tools工具箱? 按任意键继续(Ctrl + C 退出)."
 read answer
 monlorurl="https://coding.net/u/monlor/p/Monlor-Tools/git/raw/master"
