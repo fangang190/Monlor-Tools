@@ -79,12 +79,12 @@ status() {
 
 	num1=$(iptables -S | grep -c "$appname"-)
 	num2=$(ucish show | wc -l)
-	if [ "$num1" != "$num2" -o "$num2" == '0' ]; then
-		echo "未运行"
-		echo "0"
-	else
+	if [ "$num1" == "$num2" -a "$num2" != '0' ]; then
 		echo "运行中"
 		echo "1"
+	else
+		echo "未运行"
+		echo "0"
 	fi
 
 }
