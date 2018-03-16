@@ -73,13 +73,6 @@ add() {
 
 	#配置添加到工具箱配置文件
 	logsh "【Tools】" "更新工具箱配置脚本"
-	result=`cat $monlorconf | grep -i "【$appname】" | wc -l`
-	if [ "$result" == '0' ]; then
-		sed -i '/#monlor-if/d' $monlorconf
-		cat /tmp/$appname/install/monlor.conf >> $monlorconf
-		echo >> $monlorconf
-		echo "if [ ! -z \$param ]; then \$param; else menu; fi #monlor-if" >> $monlorconf
-	fi
 	#初始化uci配置	
 	uci set monlor.$appname=config
 	#每天定时重启
@@ -127,9 +120,6 @@ upgrade() {
 	#删除插件的配置
 	logsh "【Tools】" "清除一些旧的配置..."
 	sed -i "/script\/$appname/d" $monlorpath/scripts/dayjob.sh
-	ssline1=$(cat $monlorconf | grep -ni "【$appname】" | head -1 | cut -d: -f1)
-	ssline2=$(cat $monlorconf | grep -ni "【$appname】" | tail -1 | cut -d: -f1)
-	[ ! -z "$ssline1" -a ! -z "$ssline2" ] && sed -i ""$ssline1","$ssline2"d" $monlorconf > /dev/null 2>&1
 	#安装服务
 	add $appname
 	# logsh "【Tools】" "插件【$appname】更新完成"
@@ -161,9 +151,6 @@ del() {
 	fi
 	rm -rf $monlorpath/apps/$appname > /dev/null 2>&1
 	sed -i "/script\/$appname/d" $monlorpath/scripts/dayjob.sh
-	ssline1=$(cat $monlorconf | grep -ni "【$appname】" | head -1 | cut -d: -f1)
-	ssline2=$(cat $monlorconf | grep -ni "【$appname】" | tail -1 | cut -d: -f1)
-	[ ! -z "$ssline1" -a ! -z "$ssline2" ] && sed -i ""$ssline1","$ssline2"d" $monlorconf > /dev/null 2>&1
 	# install_line=`cat $monlorconf | grep -n install_$appname | cut -d: -f1`           
  	# [ ! -z "$install_line" ] && sed -i ""$install_line"s/1/0/" $monlorconf 
         logsh "【Tools】" "插件【$appname】卸载完成"

@@ -41,21 +41,10 @@ logsh "【Tools】" "解压工具箱文件"
 tar -zxvf /tmp/monlor.tar.gz -C /tmp > /dev/null 2>&1
 [ $? -ne 0 ] && logsh "【Tools】" "文件解压失败！" && exit
 logsh "【Tools】" "更新工具箱配置脚本"
-#更新monlor脚本
-ssline1=$(cat $monlorconf | grep -ni "【Tools】" | head -1 | cut -d: -f1)
-ssline2=$(cat $monlorconf | grep -ni "【Tools】" | tail -1 | cut -d: -f1)
-[ ! -z "$ssline1" -a ! -z "$ssline2" ] && sed -i ""$ssline1","$ssline2"d" $monlorconf > /dev/null 2>&1
-result=`cat $monlorconf | grep -i "【Tools】" | wc -l`
-if [ "$result" == '0' ]; then
-	sed -i '/#monlor-if/d' $monlorconf
-	sed -i '1,2d' /tmp/monlor/scripts/monlor
-	cat /tmp/monlor/scripts/monlor >> $monlorconf
-fi
 # 清除更新时不需要的文件
 rm -rf /tmp/monlor/apps
 rm -rf /tmp/monlor/scripts/dayjob.sh
 rm -rf /tmp/monlor/config/monlor.uci
-rm -rf /tmp/monlor/scripts/monlor
 rm -rf /tmp/monlor/scripts/userscript.sh
 [ "$model" == "arm" ] && rm -rf /tmp/monlor/config/applist_mips.txt
 [ "$model" == "mips" ] && mv -f /tmp/monlor/config/applist_mips.txt /tmp/monlor/config/applist.txt
