@@ -71,8 +71,7 @@ add() {
 		[ "$result" == '0' ] && echo "$appname" >> $monlorpath/config/applist_extra.txt
 	fi
 
-	#配置添加到工具箱配置文件
-	logsh "【Tools】" "更新工具箱配置脚本"
+	logsh "【Tools】" "初始化uci配置"
 	#初始化uci配置	
 	uci set monlor.$appname=config
 	#每天定时重启

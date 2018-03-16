@@ -62,13 +62,15 @@ if [ "$result" == '0' ]; then
 	echo "$monlorpath/scripts/init.sh" > /etc/firewall.user
 fi
 
-logsh "【Tools】" "检查GitHub的hosts配置"
 result1=$(uci -q get monlor.tools.hosts)
-result2=$(cat /etc/hosts | grep -c "monlor-hosts")
-if [ "$result1" == '1'  ] && [ "$result2" == '0' ]; then
-	cat $monlorpath/config/hosts.txt >> /etc/hosts
+if [ "$result1" == '1' ]; then
+	logsh "【Tools】" "检查GitHub的hosts配置"
+	result2=$(cat /etc/hosts | grep -c "monlor-hosts")
+	if [ "$result2" == '0' ]; then
+		cat $monlorpath/config/hosts.txt >> /etc/hosts
+	fi
 fi
-[ "$result1" == '0' -a "$result2" != '0' ] && sed -i '/monlor-hosts/d' /etc/hosts
+
 
 logsh "【Tools】" "运行工具箱监控脚本"
 $monlorpath/scripts/monitor.sh
@@ -76,19 +78,16 @@ $monlorpath/scripts/monitor.sh
 logsh "【Tools】" "获取工具箱版本信息"
 $monlorpath/scripts/getver.sh
 
-logsh "【Tools】" "检查迅雷配置"
 xunlei_disable=$(uci -q get monlor.tools.xunlei)
-xunlei_enabled=$(ps | grep -E 'etm|xunlei' | grep -v grep | wc -l)
-if [ "$xunlei_disable" == '1' -a "$xunlei_enabled" != '0' ]; then
-	[ -f /usr/sbin/xunlei.sh ] && mv /usr/sbin/xunlei.sh /usr/sbin/xunlei.sh.bak
-	killall xunlei > /dev/null 2>&1
-	killall etm > /dev/null 2>&1
-	/etc/init.d/xunlei stop &
-	# rm -rf $userdisk/TDDOWNLOAD 
-	# rm -rf $userdisk/ThunderDB
-elif [ "$xunlei_disable" == '0' -a "$xunlei_enabled" == '0' ]; then
-	[ ! -f /usr/sbin/xunlei.sh ] && mv /usr/sbin/xunlei.sh.bak /usr/sbin/xunlei.sh
-	/etc/init.d/xunlei start &
+if [ "$xunlei_disable" == '1' ]; then
+	logsh "【Tools】" "检查迅雷配置"
+	xunlei_enabled=$(ps | grep -E 'etm|xunlei' | grep -v grep | wc -l)
+	if [ "$xunlei_enabled" != '0' ]; then
+		[ -f /usr/sbin/xunlei.sh ] && mv /usr/sbin/xunlei.sh /usr/sbin/xunlei.sh.bak
+		killall xunlei > /dev/null 2>&1
+		killall etm > /dev/null 2>&1
+		/etc/init.d/xunlei stop &
+	fi
 fi
 
 logsh "【Tools】" "检查ssh外网访问配置"

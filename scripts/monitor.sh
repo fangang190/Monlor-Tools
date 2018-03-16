@@ -14,9 +14,9 @@ result2=$(ps | grep {init.sh} | grep -v grep | wc -l)
 [ "$result1" != '0' -a "$result2" == '0' ] && logsh "【Tools】" "检测到正在配置工具箱！" && exit
 
 #检查samba共享目录
-logger -s -t "【Tools】" "检查samba共享目录配置"
 samba_path=$(uci -q get monlor.tools.samba_path)
 if [ ! -z "$samba_path" ]; then
+	logger -s -t "【Tools】" "检查samba共享目录配置"
 	result=$(cat /etc/samba/smb.conf | grep -A 5 XiaoMi | grep -w $samba_path | awk '{print$3}')
 	if [ "$result" != "$samba_path" ]; then
 		logsh "【Tools】" "检测到samba路径被修改, 正在设置..."

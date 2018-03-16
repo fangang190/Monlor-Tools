@@ -83,7 +83,7 @@ manage() {
 			fi
 		;;
 		5)
-			read -p "请输入新的samba路径：" samba_path
+			read -p "请输入新的samba路径(回车不设置)：" samba_path
 			[ ! -d "$samba_path" -a ! -z "$samba_path" ] && mkdir -p $samba_path
 			uci set monlor.tools.samba_path="$samba_path"
 		
