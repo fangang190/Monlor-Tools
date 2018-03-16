@@ -2,8 +2,14 @@
 	工具箱正处于测试状态，更新比较频繁，安装要有一定的动手能力，出问题会用U盘刷固件。
 	arm路由: R1D R2D R3D , mips路由: R3 R3P R3G R1CM 
 	目前支持了以下几种插件:
+	
+
 	1. [ShadowSocks]:https://github.com/shadowsocks/shadowsocks/tree/master 　　　	影梭
+	
+
 	[百度](http://baidu.com)
+	
+	
 	2. KoolProxy　　　　	去广告
 	3. Aria2　		下载神器
 	4. VsFtpd　		ftp服务器
