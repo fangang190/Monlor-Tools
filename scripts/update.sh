@@ -74,7 +74,7 @@ fi
 cat $monlorpath/config/applist* | while read line
 do
 	checkuci $line || continue
-	wget $monlorpath/apps/$line/config/monlor.conf $monlorurl/apps/$line/config/monlor.conf
+	wgetsh $monlorpath/apps/$line/config/monlor.conf $monlorurl/apps/$line/config/monlor.conf
 done
 
 logsh "【Tools】" "工具箱更新完成！"
