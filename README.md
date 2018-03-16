@@ -3,7 +3,7 @@
 	arm路由: R1D R2D R3D , mips路由: R3 R3P R3G R1CM 
 	目前支持了以下几种插件:
 	1. [ShadowSocks]:https://github.com/shadowsocks/shadowsocks/tree/master 　　　	影梭
-	[Google]: http://google.com/
+	[google]: http://google.com/        "Google"
 	2. KoolProxy　　　　	去广告
 	3. Aria2　		下载神器
 	4. VsFtpd　		ftp服务器
