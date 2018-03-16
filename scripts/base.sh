@@ -64,10 +64,10 @@ compare() {
 	local ver1="$1"
 	local ver2="$2"
 	[ -z "$ver1" -o -z "$ver2" ] && return 1
+	[ "$ver1" == "$ver2" ] && return 1
 	result1=$(echo "$ver1" | grep -c "^[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$")
 	result2=$(echo "$ver2" | grep -c "^[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$")
 	[ "$result1" == '0' -o "$result2" == '0' ] && return 1 
-	[ "$ver1" == "$ver2" ] && return 1
 	local newver="$ver2"
 	local ver1_num=""
 	local ver2_num=""
