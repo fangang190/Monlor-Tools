@@ -29,7 +29,7 @@
 	3. monlor命令一键安装插件[推荐]
 
 #### 	懒人一键安装命令
-	curl -skLo /tmp/install.sh https://coding.net/u/monlor/p/Monlor-Tools/git/raw/master/install.sh && chmod +x /tmp/install.sh && /tmp/install.sh && source /etc/profile 
+	curl -skLo /tmp/install.sh https://coding.net/u/monlor/p/Monlor-Tools/git/raw/master/install.sh && chmod +x /tmp/install.sh && /tmp/install.sh && source /etc/profile &> /dev/null
 
 ## 工具箱命令(命令请勿用大写字母)：
 	1. 卸载：uninstall.sh
