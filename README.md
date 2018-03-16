@@ -4,12 +4,12 @@
 	目前支持了以下几种插件:
 	
 
-	1. [ShadowSocks]:https://github.com/shadowsocks/shadowsocks/tree/master 　　　	影梭
+	1. ShadowSocks 　　　	影梭
 	
 
-	[百度](http://baidu.com)
+	\[百度\](http://baidu.com)
 	
-	
+
 	2. KoolProxy　　　　	去广告
 	3. Aria2　		下载神器
 	4. VsFtpd　		ftp服务器
