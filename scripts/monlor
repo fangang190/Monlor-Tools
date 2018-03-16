@@ -4,12 +4,6 @@
 monlorpath=$(uci -q get monlor.tools.path)
 [ $? -eq 0 ] && source "$monlorpath"/scripts/base.sh || exit
 param=$1
-Applist=$monlorpath/config/applist
-cat $Applist* | while read line
-do
-	checkuci $line || continue
-	source $monlorpath/apps/$line/config/monlor.conf
-done
 
 manage() {
 
@@ -236,7 +230,11 @@ menu() {
 					read -p "确定要安装$appname插件？[1/0] " install
 					[ "$install" = '1' ] && appmanage.sh add $appname 
 				fi
-				checkuci $appname && "$monlorpath"/scripts/monlor $appname && uci commit monlor
+				if checkuci $appname; then 
+					source "$monlorpath"/apps/$appname/config/monlor.conf 
+					$appname
+					uci commit monlor
+				fi
 			else 
 				echo "输入有误！"
 			fi
@@ -273,4 +271,9 @@ check_update() {
 }
 
 #------------------【Tools】--------------------
-if [ ! -z $param ]; then $param; else menu; fi; #monlor-if
+if [ ! -z $param ]; then 
+	source $monlorpath/apps/$param/config/monlor.conf
+	$param
+else 
+	menu
+fi
