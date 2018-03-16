@@ -7,7 +7,7 @@
 	1. ShadowSocks 　　　	影梭
 	
 
-	\[百度\](http://baidu.com)
+	[百度](https://baidu.com)
 	
 
 	2. KoolProxy　　　　	去广告
