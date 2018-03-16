@@ -18,10 +18,10 @@
 >10. [Entware](https://github.com/Entware/Entware-ng)
 >11. [KodExplorer](https://kodcloud.com/)
 >12. [EasyExplorer](http://koolshare.cn/thread-129199-1-1.html)
->13. HttpFile
+>13. [HttpFile](http://nginx.org/)
 >14. [VerySync](http://verysync.com/)
 >15. [FastDick](https://github.com/fffonion/Xunlei-Fastdick)
->16. FireWall   
+>16. [FireWall](https://www.netfilter.org/)   
 
 ## 安装方式：  
 #### 	插件的安装
