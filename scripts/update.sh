@@ -74,6 +74,7 @@ fi
 cat $monlorpath/config/applist* | while read line
 do
 	checkuci $line || continue
+	[ -f $monlorpath/apps/$line/config/monlor.conf ] && break
 	wgetsh $monlorpath/apps/$line/config/monlor.conf $monlorurl/apps/$line/config/monlor.conf
 done
 
