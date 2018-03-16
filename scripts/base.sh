@@ -98,15 +98,17 @@ wgetsh() {
 	local wgetfiledir=$(dirname $wgetfilepath)
 	local wgeturl="$2"
 	[ ! -d "$wgetfiledir" ] && mkdir -p $wgetfiledir
+	[ -d /tmp/$wgetfilename ] && return 1 
+	rm -rf /tmp/$wgetfilename
 	result=$(curl -skL -w %{http_code} -o "/tmp/$wgetfilename" "$wgeturl")
 	if [ "$result" == "200" ]; then
 		if [ "$wgetfilepath" != /tmp/$wgetfilename ]; then
 			chmod +x /tmp/$wgetfilename > /dev/null 2>&1
 			mv -f /tmp/$wgetfilename $wgetfilepath > /dev/null 2>&1
-			rm -rf /tmp/$wgetfilename
 		fi
 		return 0
 	else
+		rm -rf /tmp/$wgetfilename
 		return 1
 	fi
 
