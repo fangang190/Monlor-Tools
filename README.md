@@ -2,33 +2,28 @@
 	工具箱正处于测试状态，更新比较频繁，安装要有一定的动手能力，出问题会用U盘刷固件。
 	arm路由: R1D R2D R3D , mips路由: R3 R3P R3G R1CM 
 	目前支持了以下几种插件:
-	
-
-	1. ShadowSocks 　　　	影梭
-	
-
-	[百度](https://baidu.com)
-	
-
-	2. KoolProxy　　　　	去广告
-	3. Aria2　		下载神器
-	4. VsFtpd　		ftp服务器
-	5. kms 			Windows激活工具
-	6. Frpc 		内网穿透(占用资源较多，建议arm路由使用)
-	7. Ngrok		内网穿透(占用资源较少)
-	8. WebShell　		网页ssh
-	9. TinyProxy		http代理
-	10. Entware　		opkg软件包工具(仅支持arm路由)
-	11. KodExplorer　	可道云，在线文档管理器(依赖于Entware，仅支持arm路由)
-	12. EasyExplorer　	文件传输同步工具(仅支持arm路由)
+	1. [ShadowSocks](https://github.com/shadowsocks/shadowsocks/tree/master) 　　　	影梭
+	2. [KoolProxy](http://koolshare.b0.upaiyun.com/)　　　　	去广告
+	3. [Aria2](http://aria2.github.io/)　		下载神器
+	4. [VsFtpd](https://security.appspot.com/vsftpd.html)　		ftp服务器
+	5. [kms](https://github.com/Wind4/vlmcsd) 			Windows激活工具
+	6. [Frpc](https://github.com/fatedier/frp) 		内网穿透(占用资源较多，建议arm路由使用)
+	7. [Ngrok](https://github.com/dosgo/ngrok-c)		内网穿透(占用资源较少)
+	8. [WebShell](https://github.com/shellinabox/shellinabox)　		网页ssh
+	9. [TinyProxy](https://github.com/tinyproxy/tinyproxy)		http代理
+	10. [Entware](https://github.com/Entware/Entware-ng)　		opkg软件包工具(仅支持arm路由)
+	11. [KodExplorer](https://kodcloud.com/)　	可道云，在线文档管理器(依赖于Entware，仅支持arm路由)
+	12. [EasyExplorer](http://koolshare.cn/thread-129199-1-1.html)　	文件传输同步工具(仅支持arm路由)
 	13. HttpFile 		http文件查看工具(依赖于Entware，仅支持arm路由)
-	14. VerySync		p2p文件同步工具
-	15. FastDick 		宽带速度提升工具
+	14. [VerySync](http://verysync.com/)		p2p文件同步工具
+	15. [FastDick](https://github.com/fffonion/Xunlei-Fastdick) 		宽带速度提升工具
 	16. FireWall            开通端口号插件
 	工具箱没有web界面，完全靠Shell开发，插件的安装、卸载、配置由配置文件完成。
 	安装完成后执行monlor命令配置工具箱，Ctrl + c或者输入exit可以退出。
 	才疏学浅，但有一颗学习和折腾的心！
-		
+	
+	![工具箱界面](https://raw.githubusercontent.com/monlor/Monlor-Tools/master/temp/img.png)
+	
 ## 安装方式：  
 #### 	插件的安装
 	1. 离线安装插件，appmanage.sh add /tmp/kms.tar.gz安装插件 
